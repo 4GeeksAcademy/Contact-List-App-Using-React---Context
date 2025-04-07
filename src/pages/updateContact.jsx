@@ -1,11 +1,9 @@
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import React from "react";
-import { contactCard } from "../components/contactCard.jsx";
 
-export const contactCard = () => {
+export const updateContact = () => {
 
   const {store, dispatch} =useGlobalReducer()
-  const [contact, setContact] = useState([]);
 
 
 	return (
