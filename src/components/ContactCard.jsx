@@ -1,5 +1,6 @@
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import React from "react";
+import { Home } from "../pages/Home.jsx";
 
 
 export const ContactCard = () => {
@@ -25,3 +26,4 @@ export const ContactCard = () => {
     </div>
   );
 };
+

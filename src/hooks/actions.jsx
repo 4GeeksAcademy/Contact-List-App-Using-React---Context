@@ -19,7 +19,7 @@ export const createAgenda = async (dispatch, payload) => {
     let response = await fetch("", {
         method: POST,
         headers: { "content-type": "application.json:" }
-    })
+    });
     let data = response.json
     userAgenda()
 }
@@ -36,6 +36,33 @@ export const getContact = async (dispatch, payload) => {
 }
 
 
+export const createContact = async (dispatch, payload) => {
+    let response = await fetch("", {
+        method: POST,
+        headers: { "content-type": "application.json:"}
+    });
+    let data = response.json
+}
+
+
+export const updateContact = async (dispatch,payload) => {
+    let response = await fetch("", {
+        method: PUT,
+        headers: {"content-type": "application.json:"}
+    });
+    let data = response.json
+}
+
+export const deleteContact = async (dispatch,payload) => {
+    let response = await fetch("");
+    let date = response.json
+
+    dispatch({
+        type: "getContact",
+        payload: {contacts: data.contacts },
+    });
+
+}
 
 
 

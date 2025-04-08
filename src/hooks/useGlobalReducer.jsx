@@ -13,7 +13,7 @@ export function StoreProvider({ children }) {
     // Initialize reducer with the initial state.
     const [store, dispatch] = useReducer(storeReducer, initialStore())
     // Provide the store and dispatch method to all child components.
-    actions = {
+    const actions = {
         userAgenda: (payload) => userAgenda(dispatch,payload),
        createAgenda: (payload) =>createAgenda(dispatch,payload),
         getContact: (payload) => getContact(dispatch,payload),

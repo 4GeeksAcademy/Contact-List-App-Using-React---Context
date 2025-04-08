@@ -1,3 +1,5 @@
+import { useActionState } from "react";
+
 export const initialStore=()=>{
   return{
     message: null,
@@ -14,7 +16,7 @@ export const initialStore=()=>{
       }
     ],
     agenda:null,
-    contact:null,
+    contacts:null,
   }
 }
 
@@ -31,8 +33,14 @@ export default function storeReducer(store, action = {}) {
       case 'set_agenda':
         return {
           ...store,
-          agenda: action.payload.agenda
+          agenda: action.payload.agenda,
+          contacts: action.payload.contacts,
         }
+        case 'get_contacts':
+          return {
+            ...store,
+            contacts: contacts.payload.contacts,
+          }
     default:
       throw Error('Unknown action.');
   }    
