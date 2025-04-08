@@ -2,6 +2,7 @@ import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import { ContactCard } from "../components/ContactCard.jsx";
 import { useState, useEffect } from "react";
 import { getContacts } from "../hooks/actions.jsx";
+import { Link } from "react-router-dom";
 
 
 export const Home = () => {
@@ -10,14 +11,19 @@ export const Home = () => {
 	const [contact, setContact] = useState([]);
 
 	useEffect(() => {
-		getContacts()
+		goGetAgenda()
 	}, [])
 
+	// if (!store.contacts) {
+	// 	return <div>Loading...</div>;  // Or display some fallback content
+	// }
+
+	// const contacts = Array.isArray(store.contacts) ? store.contacts : [];
 
 	return (
 		<div className="text-center mt-5">
 			<h1></h1>
-			<p>
+			<div>
 				{store.contacts.map((contact) => {
 					<div key={contact.id}>
 						<div>name:{contact.name}</div>
@@ -26,7 +32,12 @@ export const Home = () => {
 						<div>address:{contact.address}</div>
 					</div>
 				})}
-			</p>
+			</div>
+			<div className="text-center">
+				<ContactCard/>
+				<Link className="btn btn primary" to={"/update"}>update</Link>
+				<Link className="btn btn primary" to={"/Add"}>Add</Link>
+			</div>
 		</div>
 	);
 }; 

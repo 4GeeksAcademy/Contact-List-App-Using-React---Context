@@ -39,22 +39,38 @@ export const getContacts = async (dispatch, payload) => {
 export const createContact = async (dispatch, payload) => {
     let response = await fetch("https://playground.4geeks.com/contact/agendas/nmorris11/contacts", {
         method: POST,
-        headers: { "content-type": "application.json:"}
+        headers: { "content-type": "application.json:"},
+        body: {
+            "name": "jack",
+            "phone": "123-456-8888",
+            "email": "dontTouch@gmail.com",
+            "address": "1153 Aincrad",
+            "id": 95
+        }
     });
     let data = response.json
 }
 
 
 export const updateContact = async (dispatch,payload) => {
-    let response = await fetch("https://playground.4geeks.com/contact/agendas/nmorris11/contacts/21", {
+    let response = await fetch("https://playground.4geeks.com/contact/agendas/nmorris11/contacts/20", {
         method: PUT,
-        headers: {"content-type": "application.json:"}
+        headers: {"content-type": "application.json:"},
+        body: {
+            "name": "jack",
+            "phone": "123-456-8888",
+            "email": "dontTouch@gmail.com",
+            "address": "1153 Aincrad",
+            "id": 20
+        }
     });
     let data = response.json
 }
 
 export const deleteContact = async (dispatch,payload) => {
-    let response = await fetch("");
+    let response = await fetch("https://playground.4geeks.com/contact/agendas/nmorris11/contacts/20", {
+        method: DELETE,
+    });
     let date = response.json
 
 }
