@@ -1,7 +1,7 @@
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import React from "react";
 
-export const updateContact = () => {
+export const UpdateContact = () => {
 
 	const { store, dispatch } = useGlobalReducer()
 

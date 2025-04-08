@@ -1,5 +1,5 @@
-export const userAgenda = async (dispatch, payload) => {
-    let response = await fetch("");
+export const goGetAgenda = async (dispatch, payload) => {
+    let response = await fetch("https://playground.4geeks.com/contact/agendas/nmorris11");
     let data = response.json
 
 
@@ -16,7 +16,7 @@ export const userAgenda = async (dispatch, payload) => {
 
 
 export const createAgenda = async (dispatch, payload) => {
-    let response = await fetch("", {
+    let response = await fetch("https://playground.4geeks.com/contact/agendas/nmorris11", {
         method: POST,
         headers: { "content-type": "application.json:" }
     });
@@ -25,8 +25,8 @@ export const createAgenda = async (dispatch, payload) => {
 }
 
 
-export const getContact = async (dispatch, payload) => {
-    let response = await fetch("");
+export const getContacts = async (dispatch, payload) => {
+    let response = await fetch("https://playground.4geeks.com/contact/agendas/nmorris11/contacts");
     let data = response.json
 
     dispatch({
@@ -37,7 +37,7 @@ export const getContact = async (dispatch, payload) => {
 
 
 export const createContact = async (dispatch, payload) => {
-    let response = await fetch("", {
+    let response = await fetch("https://playground.4geeks.com/contact/agendas/nmorris11/contacts", {
         method: POST,
         headers: { "content-type": "application.json:"}
     });
@@ -46,7 +46,7 @@ export const createContact = async (dispatch, payload) => {
 
 
 export const updateContact = async (dispatch,payload) => {
-    let response = await fetch("", {
+    let response = await fetch("https://playground.4geeks.com/contact/agendas/nmorris11/contacts/21", {
         method: PUT,
         headers: {"content-type": "application.json:"}
     });
@@ -56,11 +56,6 @@ export const updateContact = async (dispatch,payload) => {
 export const deleteContact = async (dispatch,payload) => {
     let response = await fetch("");
     let date = response.json
-
-    dispatch({
-        type: "getContact",
-        payload: {contacts: data.contacts },
-    });
 
 }
 
