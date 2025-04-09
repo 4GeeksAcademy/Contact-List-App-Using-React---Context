@@ -1,18 +1,20 @@
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import { ContactCard } from "../components/ContactCard.jsx";
 import { useState, useEffect } from "react";
-import { getContacts } from "../hooks/actions.jsx";
 import { Link } from "react-router-dom";
 
 
 export const Home = () => {
 
 	const { store, dispatch, goGetAgenda } = useGlobalReducer()
-	const [contact, setContact] = useState([]);
+	const [contacts, setContacts] = useState([]);
 
 	useEffect(() => {
 		goGetAgenda()
 	}, [])
+
+
+	useEffect(() => {}, [store.contacts])
 
 	// if (!store.contacts) {
 	// 	return <div>Loading...</div>;  // Or display some fallback content

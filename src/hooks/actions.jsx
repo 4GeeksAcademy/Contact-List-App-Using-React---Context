@@ -1,10 +1,10 @@
-export const goGetAgenda = async (dispatch, payload) => {
+export const GoGetAgenda = async (dispatch, payload) => {
     let response = await fetch("https://playground.4geeks.com/contact/agendas/nmorris11");
     let data = response.json
 
 
     if (data.detail == 'Agenda "nmorris11" does not exist.') {
-        createAgenda();
+        CreateAgenda();
     }
 
 
@@ -15,17 +15,17 @@ export const goGetAgenda = async (dispatch, payload) => {
 }
 
 
-export const createAgenda = async (dispatch, payload) => {
+export const CreateAgenda = async (dispatch, payload) => {
     let response = await fetch("https://playground.4geeks.com/contact/agendas/nmorris11", {
         method: POST,
         headers: { "content-type": "application.json:" }
     });
     let data = response.json
-    userAgenda()
+    GoGetAgenda()
 }
 
 
-export const getContacts = async (dispatch, payload) => {
+export const GetContacts = async (dispatch, payload) => {
     let response = await fetch("https://playground.4geeks.com/contact/agendas/nmorris11/contacts");
     let data = response.json
 
@@ -36,7 +36,7 @@ export const getContacts = async (dispatch, payload) => {
 }
 
 
-export const createContact = async (dispatch, payload) => {
+export const CreateContact = async (dispatch, payload) => {
     let response = await fetch("https://playground.4geeks.com/contact/agendas/nmorris11/contacts", {
         method: POST,
         headers: { "content-type": "application.json:"},
@@ -52,7 +52,7 @@ export const createContact = async (dispatch, payload) => {
 }
 
 
-export const updateContact = async (dispatch,payload) => {
+export const UpdateContact = async (dispatch,payload) => {
     let response = await fetch("https://playground.4geeks.com/contact/agendas/nmorris11/contacts/20", {
         method: PUT,
         headers: {"content-type": "application.json:"},
@@ -67,7 +67,7 @@ export const updateContact = async (dispatch,payload) => {
     let data = response.json
 }
 
-export const deleteContact = async (dispatch,payload) => {
+export const DeleteContact = async (dispatch,payload) => {
     let response = await fetch("https://playground.4geeks.com/contact/agendas/nmorris11/contacts/20", {
         method: DELETE,
     });
