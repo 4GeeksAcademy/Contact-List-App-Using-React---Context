@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export const Home = () => {
 
-	const { store, dispatch, goGetAgenda } = useGlobalReducer()
+	const {store, dispatch, goGetAgenda } = useGlobalReducer()
 	const [contacts, setContacts] = useState([]);
 
 	useEffect(() => {
@@ -14,7 +14,10 @@ export const Home = () => {
 	}, [])
 
 
-	useEffect(() => {}, [store.contacts])
+	useEffect(() => {
+		setContacts(store.contacts)
+		console.log("Here are the contacts from home",store.contacts)
+	}, [contacts])
 
 	// if (!store.contacts) {
 	// 	return <div>Loading...</div>;  // Or display some fallback content
@@ -22,21 +25,22 @@ export const Home = () => {
 
 	// const contacts = Array.isArray(store.contacts) ? store.contacts : [];
 
+
 	return (
 		<div className="text-center mt-5">
 			<h1></h1>
 			<div>
-				{store.contacts.map((contact) => {
+				{contacts.length > 0 ? 
+				contacts.map((contact, index) => {
 					<div key={contact.id}>
-						<div>name:{contact.name}</div>
+						<ContactCard key={index} contact={contact}/>
+						{/* <div>name:{contact.name}</div>
 						<div>phone:{contact.phone}</div>
 						<div>email:{contact.email}</div>
-						<div>address:{contact.address}</div>
-					</div>
-				})}
-			</div>
-			<div className="text-center">
-				<ContactCard/>
+						<div>address:{contact.address}</div> */}
+					</div> 
+				}): <h1>No Contacts</h1>}
+				
 				<Link className="btn btn primary" to={"/update"}>update</Link>
 				<Link className="btn btn primary" to={"/Add"}>Add</Link>
 			</div>

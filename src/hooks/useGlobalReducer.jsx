@@ -1,7 +1,7 @@
 // Import necessary hooks and functions from React.
 import { useContext, useReducer, createContext } from "react";
 import storeReducer, { initialStore } from "../store"  // Import the reducer and the initial state.
-import { GoGetAgenda, GetContacts, CreateContact, UpdateContact, DeleteContact } from "./actions";
+import { goGetAgenda, getContacts, createContact, updateContact, deleteContact } from "./actions";
 
 // Create a context to hold the global state of the application
 // We will call this global state the "store" to avoid confusion while using local states
@@ -14,11 +14,11 @@ export function StoreProvider({ children }) {
     const [store, dispatch] = useReducer(storeReducer, initialStore())
     // Provide the store and dispatch method to all child components.
     const actions = {
-        GoGetAgenda: (payload) => GoGetAgenda(dispatch, payload),
-        GetContacts: (payload) => GetContacts(dispatch, payload),
-        CreateContact: (payload) => CreateContact(dispatch, payload),
-        UpdateContact: (payload) => UpdateContact(dispatch, payload),
-        DeleteContact: (payload) => DeleteContact(dispatch, payload),
+        goGetAgenda: (payload) => goGetAgenda(dispatch, payload),
+        getContacts: (payload) => getContacts(dispatch, payload),
+        createContact: (payload) => createContact(dispatch, payload),
+        updateContact: (payload) => updateContact(dispatch, payload),
+        deleteContact: (payload) => deleteContact(dispatch, payload),
     }
     return <StoreContext.Provider value={{ store, dispatch, ...actions }}>
         {children}
@@ -27,6 +27,6 @@ export function StoreProvider({ children }) {
 
 // Custom hook to access the global state and dispatch function.
 export default function useGlobalReducer() {
-    const { dispatch, store, GoGetAgenda, CreateContact, UpdateContact, GetContacts, DeleteContact } = useContext(StoreContext)
-    return { dispatch, store, GoGetAgenda, CreateContact, UpdateContact, GetContacts, DeleteContact };
+    const { dispatch, store, goGetAgenda, createContact, updateContact, getContacts, deleteContact } = useContext(StoreContext)
+    return { dispatch, store, goGetAgenda, createContact, updateContact, getContacts, deleteContact };
 }
