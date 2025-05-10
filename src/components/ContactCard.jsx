@@ -11,14 +11,14 @@ export const ContactCard = ({ contact }) => {
         <div className="card-body">
           <h5 className="card-title">{contact.name}</h5>
           <p className="card-text">{contact.email}</p>
-          <p className="card-text">{contact.Phone}</p>
+          <p className="card-text">{contact.phone}</p>
           <p className="card-text">{contact.address}</p>
-          <Link className="btn btn primary" to={"/update"}>
+          <Link className="btn btn-primary" to={`/update/${contact.id}`}>
             update
           </Link>
-          <Link className="btn btn primary" to={"/add"}>
-            Add
-          </Link>
+          <button className="btn btn-danger">
+            Kick Rocks
+          </button>
         </div>
       </div>
     </div>

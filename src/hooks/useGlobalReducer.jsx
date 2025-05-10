@@ -1,7 +1,7 @@
 // Import necessary hooks and functions from React.
 import { useContext, useReducer, createContext } from "react";
 import storeReducer, { initialStore } from "../store"  // Import the reducer and the initial state.
-import { goGetAgenda, getContacts, createContact, updateContact, deleteContact } from "./actions";
+import { goGetAgenda, getContacts, createContact, deleteContact } from "./actions";
 
 // Create a context to hold the global state of the application
 // We will call this global state the "store" to avoid confusion while using local states
@@ -17,7 +17,6 @@ export function StoreProvider({ children }) {
         goGetAgenda: (payload) => goGetAgenda(dispatch, payload),
         getContacts: (payload) => getContacts(dispatch, payload),
         createContact: (payload) => createContact(dispatch, payload),
-        updateContact: (payload) => updateContact(dispatch, payload),
         deleteContact: (payload) => deleteContact(dispatch, payload),
     }
     return <StoreContext.Provider value={{ store, dispatch, ...actions }}>
@@ -27,6 +26,6 @@ export function StoreProvider({ children }) {
 
 // Custom hook to access the global state and dispatch function.
 export default function useGlobalReducer() {
-    const { dispatch, store, goGetAgenda, createContact, updateContact, getContacts, deleteContact } = useContext(StoreContext)
-    return { dispatch, store, goGetAgenda, createContact, updateContact, getContacts, deleteContact };
+    const { dispatch, store, goGetAgenda, createContact, getContacts, deleteContact } = useContext(StoreContext)
+    return { dispatch, store, goGetAgenda, createContact, getContacts, deleteContact };
 }

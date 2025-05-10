@@ -7,19 +7,18 @@ export const Home = () => {
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
-    goGetAgenda();
+    goGetAgenda(dispatch, store);
+    // console.log("Here are the contacts from home", store.contacts);
   }, []);
 
-  useEffect(() => {
-    setContacts(store.contacts);
-    console.log("Here are the contacts from home", store.contacts);
-  }, [store.contacts]);
+  // useEffect(() => {
+  //   setContacts(store.contacts);
 
   return (
     <div className="text-center mt-5">
       <h1></h1>
       <div>
-        {store.contacts?.length> 0 ? (
+        {store.contacts?.length > 0 ? (
           store.contacts.map((contact, index) => (
             <ContactCard key={index} contact={contact} />
           ))
