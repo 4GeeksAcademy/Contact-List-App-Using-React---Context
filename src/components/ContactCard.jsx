@@ -2,7 +2,7 @@ import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import { Link } from "react-router-dom";
 
 export const ContactCard = ({ contact }) => {
-  const { store, dispatch } = useGlobalReducer();
+  const { store, dispatch, deleteContact } = useGlobalReducer();
 
   return (
     <div>
@@ -16,7 +16,8 @@ export const ContactCard = ({ contact }) => {
           <Link className="btn btn-primary" to={`/update/${contact.id}`}>
             update
           </Link>
-          <button className="btn btn-danger">
+          <button className="btn btn-danger" onClick={() => deleteContact(dispatch, contact.id)}>
+            {console.log("contact: ",contact.id)}
             Kick Rocks
           </button>
         </div>

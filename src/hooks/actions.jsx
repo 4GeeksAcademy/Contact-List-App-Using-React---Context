@@ -78,12 +78,14 @@ export const createContact = async (dispatch, payload) => {
 //    getContacts(dispatch);
 // };
 
-export const deleteContact = async (dispatch, payload) => {
+export const deleteContact = async (dispatch, id) => {
+  console.log("delete id",id)
   let response = await fetch(
-    "https://playground.4geeks.com/contact/agendas/nmorris11/contacts/20",
+    `https://playground.4geeks.com/contact/agendas/nmorris11/contacts/${id}`,
     {
       method: "DELETE",
     }
   );
   let data = response.json();
+   getContacts(dispatch);
 };
