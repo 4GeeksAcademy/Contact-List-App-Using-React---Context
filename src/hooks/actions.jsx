@@ -78,14 +78,25 @@ export const createContact = async (dispatch, payload) => {
 //    getContacts(dispatch);
 // };
 
+
 export const deleteContact = async (dispatch, id) => {
-  console.log("delete id",id)
-  let response = await fetch(
-    `https://playground.4geeks.com/contact/agendas/nmorris11/contacts/${id}`,
-    {
-      method: "DELETE",
+  console.log("delete id", id);
+
+  try {
+    const response = await fetch(
+      `https://playground.4geeks.com/contact/agendas/nmorris11/contacts/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    if (response.ok) {
+      console.log(`Contact ${id} deleted successfully.`);
+      getContacts(dispatch);
+    } else {
+      console.error("Failed to delete contact:", response.status);
     }
-  );
-  let data = response.json();
-   getContacts(dispatch);
+  } catch (error) {
+    console.error("Error deleting contact:", error);
+  }
 };
